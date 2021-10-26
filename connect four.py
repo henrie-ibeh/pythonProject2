@@ -89,8 +89,6 @@ def has_won(board, symbol):
     for x in range(len(board) - 3):
         for y in range(len(board[0]) - 3):
             if board[x][y] == symbol and board[x + 1][y + 1] == symbol and board[x + 2][y + 2] == symbol and \
-                    board[x + 3][y + 3] == symbol:
-                return True
 
     return False
 
