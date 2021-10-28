@@ -88,7 +88,7 @@ def has_won(board, symbol):
     # check \ diagonal spaces
     for x in range(len(board) - 3):
         for y in range(len(board[0]) - 3):
-            if board[x][y] == symbol and board[x + 1][y + 1] == symbol and board[x + 2][y + 2] == symbol and \
+            if board[x][y] == symbol and board[x + 1][y + 1] == symbol and board[x + 2][y + 2] == symbol:
 
     return False
 
