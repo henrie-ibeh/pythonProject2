@@ -22,12 +22,18 @@ frames = [df14, df15, df16, df17, df18, df19, df20]
 fullFrame = pandas.concat(frames)
 
 shortFrame = fullFrame[['HOME_TEAM', 'AWAY_TEAM', 'FTR', 'FTHG', 'FTAG', 'HTR', 'H_ST', 'A_ST']]
-X = shortFrame[['HOME_TEAM', 'AWAY_TEAM', 'H_ST', 'A_ST']]
-y = shortFrame['FTR']
+X = shortFrame['H_ST']
+y = shortFrame['FTHG']
 
-regr = linear_model.LinearRegression()
-regr.fit(X, y)
+mymodel = numpy.poly1d(numpy.polyfit(X, y, 3))
 
-predictedWinner = regr.predict([['Leicester City', 'Wolverhampton Wanderers', 11, 15]])
-print(predictedWinner)
+myline = numpy.linspace(1, 22, 100)
+
+plt.scatter(X, y)
+print(r2_score(y, mymodel(X)))
+plt.plot(myline, mymodel(myline))
+plt.show()
+
+
+
 

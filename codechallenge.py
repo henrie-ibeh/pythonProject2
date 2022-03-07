@@ -6,6 +6,8 @@ def count(arr):
 count([1,3,2,3,5,0])
 """
 # convert to int if int in list
+import math
+
 """
 g = ["5", "-2", "4", "C", "D", "9", "+", "+"]
 new = [int(x) if x.lstrip('-').isnumeric() else x for x in g]
@@ -117,3 +119,20 @@ printArray(arr, 7)
 
 a_b_c = [2445,133,12454,123]
 print("\n",max(a_b_c))
+
+i = 1
+while True:
+    if i%3 == 0:
+        break
+    print(i)
+    i += 1
+
+print(math.pow(3, 2))
+
+x = 1;
+while True:
+    if x % 5 == 0:
+        break
+    print(x)
+    x += 1
+print(math.sqrt(9))
