@@ -27,12 +27,11 @@ with open("C:/Users/pc/Downloads/Compressed/HI_candidates/NitarandaAlexander__CV
 import re
 import docx
 import os
-import csv
 
 
 def extractor(folder_path):
     def readtextdoc(path):
-        doc = docx.Document(filename)
+        doc = docx.Document(path)
 
         completedText = []
 
@@ -46,7 +45,6 @@ def extractor(folder_path):
     pattern = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+')
 
     matches = pattern.finditer(text)
-    print(matches)
 
     def first_match(matches):
         ma = 1
@@ -57,7 +55,19 @@ def extractor(folder_path):
                 return i
 
     ans = str(first_match(matches).group(0))
-    print(ans)
+    return ans+";\n"
 
-    for filename in os.listdir(file_path):
-        readtextdoc(file_path)
+
+# extractor("C:/Users/pc/OneDrive/Desktop/CV/Assumpta Akuoma Onuoha.docx")
+
+folder = "C:/Users/pc/OneDrive/Desktop/CV/"
+for filename in os.listdir(folder):
+    if os.path.isfile(folder + filename):
+        if filename.endswith(".docx"):
+            try:
+                with open("resume.txt", "a")  as r:
+                    r.write(extractor(folder + filename))
+            except AttributeError:
+                continue
+            except ValueError:
+                continue
